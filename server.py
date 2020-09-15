@@ -1,18 +1,18 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from flask_mail import Mail, Message
+# from flask_mail import Mail, Message
 from werkzeug import exceptions
 from controllers import shoppinglist
 
 server = Flask(__name__)
 CORS(server)
-mail = Mail(server)
+# mail = Mail(server)
 
 @server.route('/')
 def home():
     return jsonify({'message': 'Hello from Flask!'}), 200
 
-@server.route('/list', methods=['GET', 'POST'])
+@server.route('/list', methods=['GET', 'POST', 'DELETE'])
 def list_handler():
     fns = {
         'GET': shoppinglist.index,
